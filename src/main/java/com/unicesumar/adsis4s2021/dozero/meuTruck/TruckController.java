@@ -14,11 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.unicesumar.adsis4s2021.dozero.base.BaseCrudController;
 import com.unicesumar.adsis4s2021.dozero.base.RequisiçãoPutInválida;
 
 @RestController
-@RequestMapping("/api/carros")
-public class TruckController {
+@RequestMapping("/api/trucks")
+public class TruckController extends BaseCrudController<Truck,TruckRepository, TruckService>{
 	@Autowired
 	private TruckService service;
 	
@@ -45,11 +46,11 @@ public class TruckController {
 	}
 	
 	@PutMapping("/{id}")
-	public void atualizar(@PathVariable("id") String id, @RequestBody Truck carro) {
-		if (!id.equals(carro.getId())) {
+	public void atualizar(@PathVariable("id") String id, @RequestBody Truck truck) {
+		if (!id.equals(truck.getId())) {
 			throw new RequisiçãoPutInválida();
 		}
-		service.atualizar(carro);
+		service.atualizar(truck);
 	}
 	
 

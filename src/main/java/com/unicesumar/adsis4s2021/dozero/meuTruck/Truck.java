@@ -7,8 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.unicesumar.adsis4s2021.dozero.base.BaseEntity;
+
 @Entity
-public class Truck {
+public class Truck extends BaseEntity{
 	@Id
 	private String id;
 	
@@ -21,11 +23,11 @@ public class Truck {
 	@Column(unique = true, nullable = false)
 	private String placa;
 	
-	@Column(unique = true, nullable = false)
-	private String codigoRenavam;
-	
 	@Column(nullable = false)
 	private Integer quilometragem;
+	
+	@Column(nullable = false)
+	private String tipoCarga;
 	
 	public Truck() {
 		id = UUID.randomUUID().toString();
@@ -54,14 +56,6 @@ public class Truck {
 
 	public void setPlaca(String placa) {
 		this.placa = placa;
-	}
-
-	public String getCodigoRenavam() {
-		return codigoRenavam;
-	}
-
-	public void setCodigoRenavam(String codigoRenavam) {
-		this.codigoRenavam = codigoRenavam;
 	}
 
 	public int getQuilometragem() {
